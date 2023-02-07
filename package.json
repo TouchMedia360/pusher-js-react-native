@@ -5,6 +5,7 @@
   "main": "dist/node/pusher.js",
   "browser": "dist/web/pusher.js",
   "react-native": "dist/react-native/pusher.js",
+  "type": "module",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "format": "prettier --config .prettierrc --write 'src/**/*.ts' 'webpack/**/*.js'",

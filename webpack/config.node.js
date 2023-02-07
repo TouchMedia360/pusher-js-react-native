@@ -1,9 +1,9 @@
-var path = require('path');
-const { merge } = require('webpack-merge');
-var configShared = require('./config.shared');
-var webpack = require('webpack');
+import path from 'path'
+import { merge } from 'webpack-merge'
+import configShared from './config.shared'
+import webpack from 'webpack'
 
-module.exports = merge({}, configShared, {
+const config = merge({}, configShared, {
   entry: {
     pusher: './src/core/pusher-with-encryption.js'
   },
@@ -24,3 +24,4 @@ module.exports = merge({}, configShared, {
     })
   ]
 });
+export default config

@@ -25,7 +25,7 @@ web:
 .PHONY: react-native
 react-native:
 	@echo "React Native Release:"
-	node_modules/webpack/bin/webpack.js --config=webpack/config.react-native.js
+	node_modules/webpack/bin/webpack.js --config=./webpack/config.react-native.js
 
 .PHONY: node
 node:

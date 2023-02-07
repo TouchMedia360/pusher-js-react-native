@@ -1,10 +1,10 @@
-var path = require('path');
-var NormalModuleReplacementPlugin = require('webpack')
-  .NormalModuleReplacementPlugin;
-var version = require('../package').version;
-const { merge } = require('webpack-merge');
-var webpack = require('webpack');
-var configShared = require('./config.shared');
+import path from 'path';
+import {NormalModuleReplacementPlugin} from 'webpack';
+import {version} from '../package'
+import {merge} from 'webpack-merge'
+import configShared  from './config.shared.js'
+import webpack from 'webpack'
+
 
 var filename = configShared.optimization.minimize
   ? 'pusher.worker.min.js'
@@ -16,7 +16,7 @@ if (process.env.INCLUDE_TWEETNACL === 'true') {
   filename = filename.replace('pusher', 'pusher-with-encryption');
 }
 
-var config = merge(configShared, {
+const config = merge(configShared, {
   entry: {
     pusher: entry
   },
@@ -39,4 +39,4 @@ var config = merge(configShared, {
   ]
 });
 
-module.exports = config;
+export default config;

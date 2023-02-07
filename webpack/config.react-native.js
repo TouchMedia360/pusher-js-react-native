@@ -1,14 +1,12 @@
-var path = require('path');
-var NormalModuleReplacementPlugin = require('webpack')
-  .NormalModuleReplacementPlugin;
-var version = require('../package').version;
-const { merge } = require('webpack-merge');
-var configShared = require('./config.shared');
-var webpack = require('webpack');
-// var buffer = require('buffer');
-var buffer = require("@craftzdog/react-native-buffer").Buffer;
+import path from 'path';
+import {NormalModuleReplacementPlugin} from 'webpack';
+import {version} from '../package'
+import {merge} from 'webpack-merge'
+import configShared  from './config.shared.js'
+import webpack from 'webpack'
+import { Buffer as buffer } from '@craftzdog/react-native-buffer';
 
-module.exports = merge({}, configShared, {
+const config = merge({}, configShared, {
   entry: {
     pusher: './src/core/pusher-with-encryption.js'
   },
@@ -30,7 +28,8 @@ module.exports = merge({}, configShared, {
       RUNTIME: JSON.stringify('react-native')
     }),
     new webpack.ProvidePlugin({
-      buffer: 'buffer'
+      buffer: buffer
     })
   ]
 });
+export default config
