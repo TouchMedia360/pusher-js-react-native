@@ -5,7 +5,8 @@ var version = require('../package').version;
 const { merge } = require('webpack-merge');
 var configShared = require('./config.shared');
 var webpack = require('webpack');
-var buffer = require('buffer');
+// var buffer = require('buffer');
+var buffer = require("@craftzdog/react-native-buffer").Buffer;
 
 module.exports = merge({}, configShared, {
   entry: {
