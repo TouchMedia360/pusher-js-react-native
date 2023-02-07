@@ -1,12 +1,12 @@
 {
   "compilerOptions": {
+    "strict": false,
     "sourceMap": true,
-    "module": "es6",
-    "declaration": true,
-    "declarationDir": "types",
+    "module": "ES6",
     "esModuleInterop": true,
     "resolveJsonModule": true,
-    "target": "es3",
+    "target": "ES6",
+    "types": ["node"],
     "removeComments": true,
     "moduleResolution": "node",
     "baseUrl": "src",
@@ -19,7 +19,7 @@
     "lib": [
       "ScriptHost",
       "DOM",
-      "ES5"
+      "ES6"
     ]
   },
   "exclude": [

@@ -1,15 +1,13 @@
-'use strict';
 
-import webpack from 'webpack'
-import fs from 'fs'
-import Config from './hosting_config.js'
-
+var webpack = require('webpack');
+var fs = require('fs');
+const Config = require('./hosting_config.js');
 var banner = fs.readFileSync('./src/core/pusher-licence.js', 'utf8');
 banner = banner.replace('<VERSION>', Config.version);
 
 var minimize = process.env.MINIMIZE === 'false' ? false : true;
 
-const config = {
+module.exports = {
   mode: process.env.MODE || 'production',
   optimization: {
     minimize: minimize
@@ -49,5 +47,3 @@ const config = {
     })
   ]
 };
-
-export default config

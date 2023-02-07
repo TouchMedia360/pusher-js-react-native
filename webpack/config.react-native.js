@@ -1,12 +1,14 @@
-import path from 'path';
-import {NormalModuleReplacementPlugin} from 'webpack';
-import {version} from '../package'
-import {merge} from 'webpack-merge'
-import configShared  from './config.shared.js'
-import webpack from 'webpack'
-import { Buffer as buffer } from '@craftzdog/react-native-buffer';
+var path = require('path');
+var NormalModuleReplacementPlugin = require('webpack')
+  .NormalModuleReplacementPlugin;
+var version = require('../package').version;
+const { merge } = require('webpack-merge');
+var configShared = require('./config.shared.js');
+var webpack = require('webpack');
+// var buffer = require('buffer');
+var buffer = require("./buffer").Buffer;
 
-const config = merge({}, configShared, {
+module.exports = merge({}, configShared, {
   entry: {
     pusher: './src/core/pusher-with-encryption.js'
   },
@@ -17,8 +19,10 @@ const config = merge({}, configShared, {
     filename: 'pusher.js'
   },
   externals: {
-    // our Reachability implementation needs to reference @react-native-community/netinfo.
-    '@react-native-community/netinfo': '@react-native-community/netinfo'
+    'react': 'react', 
+    'react-native': 'react-native',
+    '@craftzdog/react-native-buffer': '@craftzdog/react-native-buffer',
+    '@react-native-community/netinfo': '@react-native-community/netinfo',
   },
   resolve: {
     modules: ['src/runtimes/react-native']
@@ -28,8 +32,7 @@ const config = merge({}, configShared, {
       RUNTIME: JSON.stringify('react-native')
     }),
     new webpack.ProvidePlugin({
-      buffer: buffer
+      buffer: 'buffer'
     })
   ]
 });
-export default config
